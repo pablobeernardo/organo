@@ -1,0 +1,63 @@
+footer {
+    background-color: #6278f7; 
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+}
+
+.rodape img[alt="Fundo do Rodapé"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; 
+}
+
+.rodape {
+    position: relative;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+
+.rodape .social {
+    display: flex;
+    gap: 15px;
+}
+
+.rodape .social img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.rodape .social img:hover {
+    transform: scale(1.1); 
+}
+
+.rodape .logo {
+    display: flex;
+    align-items: center;
+}
+
+.rodape .logo img {
+    width: 80px;
+    height: auto;
+}
+
+.rodape .right-image img {
+    width: 24px;
+    height: 24px;
+}
+
+.rodape .right-image p{
+    margin-left: 10px;
+    font-size: 16px;
+}
