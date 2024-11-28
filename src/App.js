@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Banner from './componentes/Banner';
 import Formulario from './componentes/Formulario';
 import Time from './componentes/Time';
@@ -47,59 +47,15 @@ function App() {
     }
   ]);
 
-  const inicial = [
-    {
-      id: uuidv4(),
-      favorito: false,
-      nome: 'Joao Nunes',
-      cargo: 'Desenvolvedor Front-End',
-      imagem: 'https://githuh.com/joao.png',
-      time: times[0].nome,
-    },
-    {
-      id: uuidv4(),
-      favorito: false,
-      nome: 'Maria Silva',
-      cargo: 'Desenvolvedora Front-End',
-      imagem: 'https://githuh.com/maria.png',
-      time: times[0].nome,
-    },
-    {
-      id: uuidv4(),
-      favorito: false,
-      nome: 'Pedro Silva',
-      cargo: 'Desenvolvedor Front-End',
-      imagem: 'https://githuh.com/pedro.png',
-      time: times[3].nome,
-    },
-    {
-      id: uuidv4(),
-      favorito: false,
-      nome: 'Maria Nunes',
-      cargo: 'Desenvolvedora Front-End',
-      imagem: 'https://githuh.com/maria.png',
-      time: times[3].nome,
-    },
-    {
-      id: uuidv4(),
-      favorito: false,
-      nome: 'Joao Silva',
-      cargo: 'Desenvolvedor Front-End',
-      imagem: 'https://githuh.com/joao.png',
-      time: times[2].nome,
-    },
-    {
-      id: uuidv4(),
-      favorito: false,
-      nome: 'Maria Nunes',
-      cargo: 'Desenvolvedora Front-End',
-      imagem: 'https://githuh.com/maria.png',
-      time: times[2].nome,
-    }
-  ]
 
-
-  const [colaboradores, setColaboradores] = useState(inicial)
+  const [colaboradores, setColaboradores] = useState([])
+  
+  useEffect(() => {
+      fetch('http://localhost:8080/pessoas')
+       .then(response => response.json())
+       .then(data => setColaboradores(data))
+       .catch(error => console.error('Error:', error))
+       }, [])
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
     const novoColaborador = { ...colaborador, id: uuidv4() };
