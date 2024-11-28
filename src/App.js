@@ -140,7 +140,6 @@ function App() {
         aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}
       />
       <section className='times'>
-        <h1>Minha organização</h1>
         {times.map((time, indice) =>
           <Time
             aoFavoritar={resolverFavorito}
