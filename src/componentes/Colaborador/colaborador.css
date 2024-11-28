@@ -63,3 +63,8 @@
     z-index: 1;
     
 }
+
+.favoritar{
+    margin-top: 20px;
+    cursor: pointer;
+}

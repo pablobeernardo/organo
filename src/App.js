@@ -50,6 +50,7 @@ function App() {
   const inicial = [
     {
       id: uuidv4(),
+      favorito: false,
       nome: 'Joao Nunes',
       cargo: 'Desenvolvedor Front-End',
       imagem: 'https://githuh.com/joao.png',
@@ -57,6 +58,7 @@ function App() {
     },
     {
       id: uuidv4(),
+      favorito: false,
       nome: 'Maria Silva',
       cargo: 'Desenvolvedora Front-End',
       imagem: 'https://githuh.com/maria.png',
@@ -64,6 +66,7 @@ function App() {
     },
     {
       id: uuidv4(),
+      favorito: false,
       nome: 'Pedro Silva',
       cargo: 'Desenvolvedor Front-End',
       imagem: 'https://githuh.com/pedro.png',
@@ -71,6 +74,7 @@ function App() {
     },
     {
       id: uuidv4(),
+      favorito: false,
       nome: 'Maria Nunes',
       cargo: 'Desenvolvedora Front-End',
       imagem: 'https://githuh.com/maria.png',
@@ -78,6 +82,7 @@ function App() {
     },
     {
       id: uuidv4(),
+      favorito: false,
       nome: 'Joao Silva',
       cargo: 'Desenvolvedor Front-End',
       imagem: 'https://githuh.com/joao.png',
@@ -85,6 +90,7 @@ function App() {
     },
     {
       id: uuidv4(),
+      favorito: false,
       nome: 'Maria Nunes',
       cargo: 'Desenvolvedora Front-End',
       imagem: 'https://githuh.com/maria.png',
@@ -96,7 +102,7 @@ function App() {
   const [colaboradores, setColaboradores] = useState(inicial)
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
-    const novoColaborador = {...colaborador, id:uuidv4()};
+    const novoColaborador = { ...colaborador, id: uuidv4() };
     setColaboradores([...colaboradores, novoColaborador]);
   }
 
@@ -114,7 +120,15 @@ function App() {
   }
 
   function cadastrarTime(novoTime) {
-    setTimes([...times, {...novoTime, id: uuidv4() }])
+    setTimes([...times, { ...novoTime, id: uuidv4() }])
+  }
+
+  function resolverFavorito(id) {
+    setColaboradores(colaboradores.map(colaborador =>
+      colaborador.id === id
+        ? { ...colaborador, favorito: !colaborador.favorito }
+        : colaborador
+    ));
   }
 
   return (
@@ -129,6 +143,7 @@ function App() {
         <h1>Minha organização</h1>
         {times.map((time, indice) =>
           <Time
+            aoFavoritar={resolverFavorito}
             key={indice}
             id={time.id}
             nome={time.nome}
